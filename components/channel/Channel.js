@@ -2,6 +2,8 @@ import React from 'react'
 import $ from 'jquery'
 import echarts from "echarts"
 import moment from "moment"
+import ProvinceMap from "../../util/ProvinceMap"
+import IspName from "../../util/IspName"
 export default class Channel extends React.Component{
     constructor(props) {
         super(props);
@@ -10,13 +12,14 @@ export default class Channel extends React.Component{
         }
     }
     componentDidMount() {
+        console.log(this.props.data_id)
         var date=[],dataY={
             p2p:[],
             upload:[],
             flow:[],
             cdn:[],
-            download:[]
-        };
+            download:[],
+        },pro_name,isp_name;
         var data_id=this.props.data_id;
         data_id.map((item)=>{
             for(var key in item){
@@ -26,6 +29,8 @@ export default class Channel extends React.Component{
                 dataY.flow.push((+item[key].flow/1024/1024).toFixed(2));
                 dataY.download.push((+item[key].download/1024/1024).toFixed(2));
                 date.push(moment(+key).format('HH:mm'));
+                isp_name=IspName[item[key].isp_id];
+                pro_name=ProvinceMap[item[key].province_id];
             }
         });
         console.log(date,dataY)
@@ -38,7 +43,8 @@ export default class Channel extends React.Component{
             },
             title: {
                 left: 'center',
-                text: '流量图',
+                top:'5',
+                text: pro_name+" "+isp_name+'流量图',
                 textStyle:{
                     color:'#676a6c',
                     fontSize:13,
@@ -46,7 +52,7 @@ export default class Channel extends React.Component{
                 }
             },
             grid:{
-                left:50,
+                left:60,
                 top:40,
                 bottom:30,
                 right:10
@@ -86,14 +92,14 @@ export default class Channel extends React.Component{
                     data: dataY.flow
                 },
                 {
-                    name:'flow',
+                    name:'download',
                     type:'line',
                     smooth:true,
                     data: dataY.download
                 }
             ]
         };
-            var myChart = echarts.init(document.getElementById(this.state.chart_id));
+            var myChart = echarts.init(document.getElementById(this.props.key_id))
             myChart.setOption(option);
          
     }
@@ -111,7 +117,7 @@ export default class Channel extends React.Component{
         return (
             <div className="col-md-4">
                 <div className="panel clearfix">
-                    <div id={this.state.chart_id} style={{height:300+'px'}}></div>
+                    <div id={this.props.key_id} style={{height:300+'px'}}></div>
                     <div className="refresh">
                         <i className="fa fa-refresh"></i>
                     </div>

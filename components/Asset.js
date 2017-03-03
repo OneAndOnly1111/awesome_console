@@ -110,15 +110,16 @@ export default class Asset extends React.Component{
                             <MonitChartNetwork />
                             <Assetlist />
                         */}
-                         <div><select id='file_id' onChange={this.handleChange}>
+                         <div className="row"><div style={{marginBottom: 20+'px',
+    marginLeft: 12+'px'}} className="col-md-3"><select id='file_id' onChange={this.handleChange} className="form-control">
                              {this.state.channeldata.files.map((res,index)=>{
                                 return <option key={index}>{res.file_id}</option>
                              })
                          }
-                         </select></div>
+                         </select></div></div>
                          {
                             this.state.chartobj.length?this.state.chartobj.map((item,index)=>{
-                              return <Channel data_id={item} key={index}/>  
+                              return <Channel data_id={item} key={index} key_id={index}/>  
                             }):null
                          }
                         </div>

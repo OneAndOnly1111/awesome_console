@@ -1,0 +1,100 @@
+
+// ======variable start======
+
+@nav-bg-default: #2f4050;
+@nav-bg-active: #293846;
+@navbar-bg-default: rgba(47, 64, 80, 1);
+@nav-font-dark: #A7B1C2;
+@nav-font-light: #DFE4ED;
+@navbar-font-default: #a7b1c2;
+
+// ======variable end======
+
+.nav {
+	float: left;
+    width: 220px;
+    background: @nav-bg-default;
+    color: @nav-font-dark;
+    height: 100%;
+    position: fixed;
+    .profile{
+    	padding: 30px 20px;
+    	padding-bottom:26px;
+    	background: url(../images/header-profile.png);
+    	.profile-img{
+    		background: url(../images/user-icon-1.png) no-repeat;
+    		background-size: cover;
+    		width: 50px;
+    		height: 50px;
+    		border-radius: 50px;
+    		margin: 0 auto;
+    	}
+    	.profile-usrName{
+    		padding-top: 10px;
+    		text-align: center;
+    		color:@nav-font-light;
+    		font-size: 12px;
+    	}
+    	.profile-charactor{
+    		text-align: center;
+    		font-size: 12px;
+
+    	}
+    }
+    .nav-bar{
+		-webkit-touch-callout: none;
+		-webkit-user-select: none;
+		-khtml-user-select: none;
+		-moz-user-select: none;
+		-ms-user-select: none;
+		user-select: none;
+    	ul{
+    		padding: 0;
+    		margin: 0;
+    		li{
+    			padding:0px 23px;
+    			list-style: none;
+    			font-weight: bold;
+    			cursor: pointer;
+    			line-height: 46px;
+    			a{
+    				color: @navbar-font-default;
+    				margin-left:6px;
+    			}
+    			.icon-pull-right{
+    				float: right;
+    				margin-right: 5px;
+    				line-height: 46px;
+    			}
+    		}
+    		li.menu:hover{
+    			a.menu-text,i{
+    				color:#fff;
+    			}
+    		}
+    		li.menu:hover{
+    			background-color:@nav-bg-active;
+    		}
+    		.nav-bar-collapse{
+    			display: none;
+    			padding-left: 30px;
+    			font-size:12px;
+    			margin:0px -20px;
+    			transition: height 1s;
+    			-webkit-transition:height 1s;
+    		}
+    	};
+    	li.active{
+    		background-color: @nav-bg-active;
+    		a.menu-text,i{
+    			color:#fff;
+    		}
+    		.nav-bar-collapse li:hover a{
+    			color:#fff;
+    		}
+    		.nav-bar-collapse{
+    			display: block;
+    		}
+    	}
+    }
+}

@@ -1,0 +1,46 @@
+@btn-primary: #1ab394;
+.btn {
+    border-radius: 3px;
+    display: inline-block;
+}
+
+.btn-primary,
+.btn-primary:link,
+.btn-primary:visited {
+    background-color: @btn-primary;
+    border-color: @btn-primary;
+    color: #FFF;
+}
+
+.btn.btn-primary:hover,
+.btn.btn-primary:active {
+    background-color: #18a689;
+    border-color: #18a689;
+    color: #fff;
+}
+
+.count-info.btn {
+    color: #878688;
+    position: relative;
+    .count-label {
+        line-height: 8px;
+        padding: 2px 3px;
+        position: absolute;
+        left: 18px;
+        top: -1px;
+        font-size: 10px;
+        min-width: 21px;
+    }
+    .warning {
+        background-color: #f8ac59;
+        color: #FFFFFF;
+    }
+    .primary {
+        background-color: @btn-primary;
+        color: #FFFFFF;
+    }
+    .problem{
+    	background-color: #fb5344;
+        color: #fff;
+    }
+}
